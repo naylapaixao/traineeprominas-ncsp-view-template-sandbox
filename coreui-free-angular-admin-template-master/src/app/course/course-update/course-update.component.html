@@ -1,0 +1,24 @@
+<div>
+    <h2><strong>Editar Curso</strong></h2>
+    </div>
+    
+    <form class="form-width example-container" [formGroup]="courseForm" (ngSubmit)="putCourse(courseForm.value)">
+      <mat-form-field>
+        <input matInput name="name" placeholder="Nome do curso" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput name="period" placeholder="Periodo" formControlName="period">
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput name="city" placeholder="Cidade" formControlName="city">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label >Professores</mat-label>
+        <mat-select name="teachers" formControlName="teachers" multiple>
+        <mat-option *ngFor="let element of teachers" [value]="element.id">{{element.name}} {{element.lastName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <button type="submit" [disabled]="!courseForm.valid" mat-button color="primary" >Atualizar</button>
+    </form>
+    

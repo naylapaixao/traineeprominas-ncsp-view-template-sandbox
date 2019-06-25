@@ -1,0 +1,17 @@
+<div>
+    <h2><strong>Novo Usuário</strong></h2>
+  </div>
+  <form class="example-container" [formGroup]="userForm" (ngSubmit)="addUser(userForm.value)">
+    <mat-form-field>
+      <input matInput name="name" placeholder="Nome do Usuário" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea  matInput name="lastName" placeholder="Sobrenome" formControlName="lastName"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="profile" placeholder="Profile" formControlName="profile">
+    </mat-form-field>
+  
+    <button type="submit" [disabled]="!userForm.valid" mat-button color="primary" >Adicionar</button>
+  </form>
+  

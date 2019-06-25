@@ -1,0 +1,18 @@
+<div>
+    <h2><strong>Editar Professor</strong></h2>
+    </div>
+    
+    <form class="example-container" [formGroup]="teacherForm" (ngSubmit)="putTeacher(teacherForm.value)">
+      <mat-form-field>
+        <input matInput name="name" placeholder="nome" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input  matInput name="lastName" placeholder="sobrenome" formControlName="lastName">
+      </mat-form-field>
+      <mat-checkbox class = "example-margin" color = "primary" formControlName="phd" value="true"> 
+          <label>Esse professor possui PHD </label> 
+      </mat-checkbox>
+    
+      <button type="submit" [disabled]="!teacherForm.valid" mat-button color="primary" >Editar</button>
+    </form>
+    
