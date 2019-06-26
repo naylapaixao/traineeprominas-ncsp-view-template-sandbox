@@ -11,25 +11,56 @@ import { Course } from '../../../model/course';
 })
 export class ChartStudentComponent implements OnInit {
 
-  isLoadingResults: boolean;
-  data = Student;
+  course = [];
+  student = [];
+  pieChartLabels;
+  pieChartData;
+  pieChartType;
+
   constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {
-    this.api.getStudents()
+    this.api.getCourses()
       .subscribe(res => {
-        this.data;
-        console.log(res);
-      }, err => {
-        console.log(err);
-        this.isLoadingResults = false;
+        res.forEach(e => {
+          this.course.push(e.name)
+          //console.log(this.course)
+
+          this.api.getStudents()
+            .subscribe(res => {
+              let soma = 0;
+              res.forEach(c => { 
+                // console.log(">>>>>>>",c.course)
+                if(e.id == c.course.id){
+                  soma++;
+                }
+              });
+              //console.log('^',soma)
+              this.student.push(soma);
+            })
+        });
+
+        this.plotChart(); 
       });
+      
   }
 
-  // Pie
-  public pieChartLabels: string[] = ['Matematica', 'Engenharia da Computação', 'Engenharia Elétrica'];
-  public pieChartData: number[] = [300]; 
-  public pieChartType = 'pie';
+  plotChart(){
+    console.log(this.course)
+    console.log(this.student)
+     this.pieChartLabels = this.course;
+     this.pieChartData = this.student; 
+     this.pieChartType = 'pie';
+  }
+  
+  //events
+ chartClicked(e: any): void {
+  // console.log(e);
+}
+chartHovered(e: any): void {
+  // console.log(e);
+}
+ 
 
 
 

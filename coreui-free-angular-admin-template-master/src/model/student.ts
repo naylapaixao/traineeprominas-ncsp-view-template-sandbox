@@ -5,5 +5,5 @@ export class Student {
     name: string;
     lastName: string;
     age: number;
-    course: Course[] = [];
+    course: Course;
 }
