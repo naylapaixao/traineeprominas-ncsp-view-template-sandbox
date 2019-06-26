@@ -12,6 +12,7 @@ import {UserComponent} from "./user/user/user.component";
 import {UseIdComponent} from "./user/use-id/use-id.component";
 import { UserAddComponent } from "./user/user-add/user-add.component";
 import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { UserChartComponent } from './user/user-chart/user-chart.component';
 import { TeacherComponent } from './teacher/teacher/teacher.component';
 import { TeacherIdComponent} from './teacher/teacher-id/teacher-id.component';
 import { TeacherAddComponent } from './teacher/teacher-add/teacher-add.component';
@@ -24,6 +25,7 @@ import { StudentComponent } from './student/student/student.component';
 import  { StudentIdComponent } from './student/student-id/student-id.component';
 import  { StudentAddComponent } from './student/student-add/student-add.component';
 import  { StudentUpdateComponent } from './student/student-update/student-update.component';
+import  { ChartStudentComponent } from './student/chart-student/chart-student.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +89,11 @@ export const routes: Routes = [
         data:{title: 'Editar Usuário'}
       },
       {
+        path:'chart/user',
+        component: UserChartComponent,
+        data:{title: 'Gráfico Admin X Guess'}
+      },
+      {
         path: 'teacher',
         component: TeacherComponent,
         data: { title: 'Lista de professores' }
@@ -145,6 +152,11 @@ export const routes: Routes = [
         path:'update/student/:id',
         component: StudentUpdateComponent,
         data:{title: 'Editar Aluno'}
+      },
+      {
+        path:'chart/student',
+        component: ChartStudentComponent,
+        data:{title: 'Gráfico Aluno por Curso'}
       },
       {
         path: 'base',

@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">
+      Gráfico de Barra
+      <div class="card-header-actions">
+        <!-- <a href="http://www.chartjs.org">
+          <small class="text-muted">docs</small>
+        </a> -->
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="chart-wrapper">
+        <canvas baseChart class="chart" *ngIf="barChartData"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
