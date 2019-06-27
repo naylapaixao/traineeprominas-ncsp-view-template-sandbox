@@ -5,5 +5,15 @@
 
 export const environment = {
   production: false,
-  api: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/'
+  api: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/',
+  apiSecure: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/'
 };
+
+
+//Mine api
+// https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/
+// https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/
+
+//Lucas
+// https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/
+// https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1.1/

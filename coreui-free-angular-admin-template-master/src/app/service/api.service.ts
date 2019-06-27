@@ -8,10 +8,11 @@ import { Course } from '../../model/course';
 import { Student } from '../../model/student';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json','authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlJUQkJNemhEUmpoRlFqTTBRVGhGT0VZeE5FRTFRemMyTURKRk16QkdSa0ZGTkVRMk5rVTBNUSJ9.eyJpc3MiOiJodHRwczovL2Rldi14c2Zvbi1tNS5hdXRoMC5jb20vIiwic3ViIjoicUJoSVBvR0FzRTdiWnBBU3BrZlhsaGhKcjFpZXdhd1pAY2xpZW50cyIsImF1ZCI6IlRyYWluZWUiLCJpYXQiOjE1NjE2NDE1MzcsImV4cCI6MTU2MTcyNzkzNywiYXpwIjoicUJoSVBvR0FzRTdiWnBBU3BrZlhsaGhKcjFpZXdhd1oiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.qtYM67u71nFpnQAxJWfMyWetypVYYDbW3bSrHV2FyD1NLdsPN8BRpy4xrzLFKZBehArHAHkpI7VzEpaYq6Cl8prj1GETmUvGmrCczlNgezskzY5_iyOvcRi-wTcl74K0TFabVy1hFRY30jG5QHacomS0Ng0iR1UAZyv2jq9ALKImsN1Q5NekuLMqjoMv4nWDZMmGOXhLzDV-UW5PeBzCN7GShDWng0r5H4VbJvbtsLeNEUEhXi_uHCnil0b7SijZwmnQbcNxsnSH7Qbmsu3qvCXM8aRCQu6Si2S6mN8HIQWe58zJNHEHomXQVkds-trO7V9czo96hX1erAzhjTGlNw'})
 };
 
 import { apiUrl } from '../app.api';
+import { apiUrlSecure } from '../app.api';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${apiUrl}JSON/user`)
+    return this.http.get<User[]>(`${apiUrl}JSON/user` || `${apiUrlSecure}JSON/user`, httpOptions)
       .pipe(
         tap(users => console.log('leu os usuários')),
         catchError(this.handleError('getUsers', []))
@@ -29,15 +30,15 @@ export class ApiService {
   }
 
   getUser(id: number): Observable<User> {
-    const url = `${apiUrl}JSON/user/${id}`;
-    return this.http.get<User>(url).pipe(
+    const url = (`${apiUrl}JSON/user/${id}` || `${apiUrlSecure}JSON/user/${id}`);
+    return this.http.get<User>(url, httpOptions).pipe(
       tap(_ => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
   postUser(user): Observable<User> {
-    return this.http.post<User>(`${apiUrl}user`, user, httpOptions).pipe(
+    return this.http.post<User>(`${apiUrl}user` || `${apiUrlSecure}user`, user, httpOptions).pipe(
       tap((user1: User) => console.log(`adicionou o usuário com w/ id=${user1.id}`)),
       catchError(this.handleError<User>('postUser'))
     );
@@ -60,7 +61,7 @@ export class ApiService {
   }
 
   getTeachers(): Observable<Teacher[]> {
-    return this.http.get<Teacher[]>(`${apiUrl}JSON/teacher`)
+    return this.http.get<Teacher[]>(`${apiUrl}JSON/teacher`, httpOptions)
       .pipe(
         tap(teachers => console.log('leu os usuários')),
         catchError(this.handleError('getTeachers', []))
@@ -99,7 +100,7 @@ export class ApiService {
   }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(`${apiUrl}course`)
+    return this.http.get<Course[]>(`${apiUrl}course`, httpOptions)
       .pipe(
         tap(courses => console.log('leu os cursos')),
         catchError(this.handleError('getCourses', []))
@@ -108,7 +109,7 @@ export class ApiService {
 
   getCourse(id: number): Observable<Course> {
     const url = `${apiUrl}JSON/course/${id}`;
-    return this.http.get<Course>(url).pipe(
+    return this.http.get<Course>(url, httpOptions).pipe(
       tap(_ => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<Course>(`getCourse id=${id}`))
     );
@@ -138,7 +139,7 @@ export class ApiService {
   }
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${apiUrl}student`)
+    return this.http.get<Student[]>(`${apiUrl}student`,httpOptions)
       .pipe(
         tap(students => console.log('leu os cursos')),
         catchError(this.handleError('getStudents', []))
@@ -147,7 +148,7 @@ export class ApiService {
 
   getStudent(id: number): Observable<Student> {
     const url = `${apiUrl}JSON/student/${id}`;
-    return this.http.get<Student>(url).pipe(
+    return this.http.get<Student>(url, httpOptions).pipe(
       tap(_ => console.log(`leu o usuário id=${id}`)),
       catchError(this.handleError<Student>(`getStudent id=${id}`))
     );
