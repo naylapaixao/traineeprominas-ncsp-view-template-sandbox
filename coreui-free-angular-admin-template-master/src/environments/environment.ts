@@ -14,6 +14,6 @@ export const environment = {
 // https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/
 // https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/
 
-//Lucas
+//Lucas api
 // https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/
 // https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1.1/
