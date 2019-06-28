@@ -3,18 +3,18 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-export const environment = {
-  production: false,
-  api: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/',
-  apiSecure: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/'
-};
-
-
 // export const environment = {
 //   production: false,
-//   api: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/',
-//   apiSecure: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1.1/'
+//   api: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/',
+//   apiSecure: 'https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/'
 // };
+
+
+export const environment = {
+  production: false,
+  api: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/',
+  apiSecure: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1.1/'
+};
 
 
 //Mine api
