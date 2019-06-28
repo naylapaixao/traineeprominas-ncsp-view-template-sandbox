@@ -10,6 +10,13 @@ export const environment = {
 };
 
 
+// export const environment = {
+//   production: false,
+//   api: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1/',
+//   apiSecure: 'https://traineeprominas-lrm-sandbox.herokuapp.com/api/v1.1/'
+// };
+
+
 //Mine api
 // https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1/
 // https://traineeprominas-ncsp-sandbox.herokuapp.com/api/v1.1/
